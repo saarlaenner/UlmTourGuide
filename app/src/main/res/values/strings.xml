@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ulm Tour Guide</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="family">Family activities</string>
+    <string name="bars">Bars</string>
+    <string name="sights">Sights</string>
+</resources>
