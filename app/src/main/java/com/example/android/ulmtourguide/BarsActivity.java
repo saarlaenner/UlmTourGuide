@@ -39,7 +39,7 @@ public class BarsActivity extends AppCompatActivity {
 
         // Find the TextView in the list_item.xml layout with the ID LocationName
         TextView locationNameTextView = findViewById(R.id.details_destination_name);
-        // Get the location name from the current Destination object and 
+        // Get the location name from the current Destination object and
         // set this text on the LocationName TextView
         locationNameTextView.setText(getString(R.string.name) + currentDestination.getLocationName());
 

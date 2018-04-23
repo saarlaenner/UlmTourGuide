@@ -33,7 +33,7 @@ public class SightsFragment extends Fragment {
         locations.add (new Destination( getString(R.string.hfg), getString(R.string.outer_city), getString(R.string.design_museum), R.drawable.hfg));
         locations.add (new Destination( getString(R.string.munster), getString(R.string.city), getString(R.string.church), R.drawable.munster));
         locations.add (new Destination( getString(R.string.einstein_birthplace), getString(R.string.city), getString(R.string.history), R.drawable.einstein));
-        locations.add (new Destination( getString(R.string.schiefes_haus), getString(R.string.fischerviertel), getString(R.string.outer_city), R.drawable.schiefeshaus));
+        locations.add (new Destination( getString(R.string.schiefes_haus), getString(R.string.fischerviertel), getString(R.string.history), R.drawable.schiefeshaus));
         locations.add (new Destination( getString(R.string.donau), getString(R.string.city), getString(R.string.nature), R.drawable.donau));
         locations.add (new Destination( getString(R.string.blautopf), getString(R.string.blaubeuren), getString(R.string.nature), R.drawable.blautopf));
 
