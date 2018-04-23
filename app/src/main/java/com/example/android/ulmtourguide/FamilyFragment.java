@@ -27,29 +27,31 @@ public class FamilyFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.location_list, container, false);
 
         final ArrayList<Destination> locations = new ArrayList<Destination>();
-        locations.add(new Destination("Friedrichsau", "Outer City", "Nature"));
-        locations.add(new Destination("Donaubad", "Neu-Ulm", "Sport"));
-        locations.add(new Destination("Boulderhalle", "Söflingen", "Sport"));
-        locations.add(new Destination("Munster", "City", "History"));
-        locations.add(new Destination("Brotmuseum", "City", "History"));
-        locations.add(new Destination("Spielplatz Karlsplatz", "City", "Fun"));
-        locations.add(new Destination("Tiergarten", "Outer City", "Nature"));
-        locations.add(new Destination("Blautopf", "Blaubeuren", "Nature"));
+        locations.add(new Destination(getString(R.string.friedrichsau), getString(R.string.outer_city), getString(R.string.nature)));
+        locations.add(new Destination(getString(R.string.donaubad), getString(R.string.neu_ulm), getString(R.string.sport)));
+        locations.add(new Destination(getString(R.string.boulderhalle), getString(R.string.soeflingen), getString(R.string.sport)));
+        locations.add(new Destination(getString(R.string.munster), getString(R.string.city), getString(R.string.history)));
+        locations.add(new Destination(getString(R.string.brotmuseum), getString(R.string.city), getString(R.string.history)));
+        locations.add(new Destination(getString(R.string.spielplatz_karlsplatz), getString(R.string.city), getString(R.string.fun)));
+        locations.add(new Destination(getString(R.string.tiergarten), getString(R.string.outer_city), getString(R.string.nature)));
+        locations.add(new Destination(getString(R.string.blautopf), getString(R.string.blaubeuren), getString(R.string.nature)));
 
-        LocationsAdapter itemsAdapter = new LocationsAdapter(getActivity(), locations, R.color.category_family);
-        ListView listView = (ListView) rootView.findViewById(R.id.list);
-        listView.setAdapter(itemsAdapter);
+        LocationsAdapter locationItemsAdapter = new LocationsAdapter(getActivity(), locations, R.color.category_family);
+        ListView listView = rootView.findViewById(R.id.list);
+        listView.setAdapter(locationItemsAdapter);
 
         listView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Destination location = locations.get(position);
+                //put details into the intent:
+                //1. the clicked position
+                //2. the whole array
                 Bundle details = new Bundle();
                 details.putInt("pos", position);
                 details.putSerializable("locations", locations);
-                Intent a = new Intent(getActivity(), FamilyActivity.class);
-                a.putExtras(details);
-                startActivity(a);
+                Intent familyDetailsActivity = new Intent(getActivity(), FamilyActivity.class);
+                familyDetailsActivity.putExtras(details);
+                startActivity(familyDetailsActivity);
             }
         });
         return rootView;

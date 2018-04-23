@@ -27,29 +27,31 @@ public class RestaurantsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.location_list, container, false);
 
         final ArrayList<Destination> locations = new ArrayList<Destination>();
-        locations.add (new Destination( "Zur Brezel", "City", "Bavarian"));
-        locations.add (new Destination( "Hacker Pschorr", "City", "Bavarian"));
-        locations.add (new Destination( "Sushi Lounge", "City", "Sushi"));
-        locations.add (new Destination( "Peppers", "City", "Mexican"));
-        locations.add (new Destination( "SWU Kantine", "City", "Mixed"));
-        locations.add (new Destination( "Damn Burger", "City", "Burger"));
-        locations.add (new Destination( "Fräulein Lecker", "City", "German"));
-        locations.add (new Destination( "Wilder Mann", "Fischerviertel", "German"));
+        locations.add (new Destination( getString(R.string.zur_brezel), getString(R.string.city), getString(R.string.bavarian)));
+        locations.add (new Destination( getString(R.string.hacker_pschorr), getString(R.string.city), getString(R.string.bavarian)));
+        locations.add (new Destination( getString(R.string.sushi_lounge), getString(R.string.city), getString(R.string.sushi)));
+        locations.add (new Destination( getString(R.string.peppers), getString(R.string.city), getString(R.string.mexican)));
+        locations.add (new Destination( getString(R.string.swu_cantina), getString(R.string.city), getString(R.string.mixed)));
+        locations.add (new Destination( getString(R.string.damn_burger), getString(R.string.city), getString(R.string.burger)));
+        locations.add (new Destination( getString(R.string.fraeulein_lecker), getString(R.string.city), getString(R.string.german)));
+        locations.add (new Destination( getString(R.string.wilder_mann), getString(R.string.fischerviertel), getString(R.string.german)));
 
-        LocationsAdapter itemsAdapter = new LocationsAdapter(getActivity(), locations, R.color.category_restaurants);
-        ListView listView = (ListView) rootView.findViewById(R.id.list);
-        listView.setAdapter(itemsAdapter);
+        LocationsAdapter locationItemsAdapter = new LocationsAdapter(getActivity(), locations, R.color.category_restaurants);
+        ListView listView = rootView.findViewById(R.id.list);
+        listView.setAdapter(locationItemsAdapter);
 
         listView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Destination location = locations.get(position);
+                //put details into the intent:
+                //1. the clicked position
+                //2. the whole array
                 Bundle details=new Bundle();
                 details.putInt("pos",position);
                 details.putSerializable("locations", locations);
-                Intent a = new Intent(getActivity(), RestaurantsActivity.class);
-                a.putExtras(details);
-                startActivity(a);
+                Intent restaurantsDetailActivity = new Intent(getActivity(), RestaurantsActivity.class);
+                restaurantsDetailActivity.putExtras(details);
+                startActivity(restaurantsDetailActivity);
             }
         });
         return rootView;

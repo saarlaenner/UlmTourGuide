@@ -28,29 +28,31 @@ public class SightsFragment extends Fragment {
 
         final ArrayList<Destination> locations = new ArrayList<Destination>();
         //Pictures are from the internet from different websites and app will not be published
-        locations.add (new Destination( "Friedrichsau", "Outer city", "Nature", R.drawable.friedrichsau));
-        locations.add (new Destination( "Rathaus", "City", "History", R.drawable.rathaus));
-        locations.add (new Destination( "Hochschule für Gestaltung (HfG)", "Kuhberg", "Design/Museum", R.drawable.hfg));
-        locations.add (new Destination( "Munster", "City", "Church", R.drawable.munster));
-        locations.add (new Destination( "Albert Einstein Birthplace", "City", "History", R.drawable.einstein));
-        locations.add (new Destination( "Schiefes Haus", "Fischerviertel", "History", R.drawable.schiefeshaus));
-        locations.add (new Destination( "Donau", "City", "Nature", R.drawable.donau));
-        locations.add (new Destination( "Blautopf", "Blaubeuren", "Nature", R.drawable.blautopf));
+        locations.add (new Destination( getString(R.string.friedrichsau), getString(R.string.outer_city), getString(R.string.nature), R.drawable.friedrichsau));
+        locations.add (new Destination( getString(R.string.rathaus), getString(R.string.city), getString(R.string.history), R.drawable.rathaus));
+        locations.add (new Destination( getString(R.string.hfg), getString(R.string.outer_city), getString(R.string.design_museum), R.drawable.hfg));
+        locations.add (new Destination( getString(R.string.munster), getString(R.string.city), getString(R.string.church), R.drawable.munster));
+        locations.add (new Destination( getString(R.string.einstein_birthplace), getString(R.string.city), getString(R.string.history), R.drawable.einstein));
+        locations.add (new Destination( getString(R.string.schiefes_haus), getString(R.string.fischerviertel), getString(R.string.outer_city), R.drawable.schiefeshaus));
+        locations.add (new Destination( getString(R.string.donau), getString(R.string.city), getString(R.string.nature), R.drawable.donau));
+        locations.add (new Destination( getString(R.string.blautopf), getString(R.string.blaubeuren), getString(R.string.nature), R.drawable.blautopf));
 
-        LocationsAdapter itemsAdapter = new LocationsAdapter(getActivity(), locations, R.color.category_sights);
-        ListView listView = (ListView) rootView.findViewById(R.id.list);
-        listView.setAdapter(itemsAdapter);
+        LocationsAdapter locationItemsAdapter = new LocationsAdapter(getActivity(), locations, R.color.category_sights);
+        ListView listView = rootView.findViewById(R.id.list);
+        listView.setAdapter(locationItemsAdapter);
 
         listView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Destination location = locations.get(position);
+                //put details into the intent:
+                //1. the clicked position
+                //2. the whole array
                 Bundle details=new Bundle();
                 details.putInt("pos",position);
                 details.putSerializable("locations", locations);
-                Intent a = new Intent(getActivity(), SightsActivity.class);
-                a.putExtras(details);
-                startActivity(a);
+                Intent sightsDetailActivity = new Intent(getActivity(), SightsActivity.class);
+                sightsDetailActivity.putExtras(details);
+                startActivity(sightsDetailActivity);
             }
         });
         return rootView;

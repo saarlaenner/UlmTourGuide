@@ -40,37 +40,37 @@ public class LocationsAdapter extends ArrayAdapter<Destination> {
         Destination currentDestination = getItem(position);
 
         // Find the TextView in the list_item.xml layout with the ID text_container
-        RelativeLayout textContainer = (RelativeLayout) listItemView.findViewById(R.id.text_container);
+        RelativeLayout textContainer = listItemView.findViewById(R.id.text_container);
         // Get the version name from the current Destination object and
         int color = ContextCompat.getColor(getContext(), mColorResourceID);
         // set this color on the corresponding TextView
         textContainer.setBackgroundColor(color);
 
         // Find the TextView in the list_item.xml layout with the ID LocationName
-        TextView locationNameTextView = (TextView) listItemView.findViewById(R.id.locationName);
+        TextView locationNameTextView = listItemView.findViewById(R.id.locationName);
         // Get the location name from the current Destination object and
         // set this text on the LocationName TextView
         locationNameTextView.setText(currentDestination.getLocationName());
 
         // Find the TextView in the list_item.xml layout with the ID locationDestination
-        TextView locationDestinationTextView = (TextView) listItemView.findViewById(R.id.locationDestination);
+        TextView locationDestinationTextView = listItemView.findViewById(R.id.locationDestination);
         // Get the location destination from the current Destination object and
         // set this text on the locationDestination TextView
         locationDestinationTextView.setText(currentDestination.getLocationDestination());
         locationDestinationTextView.setTypeface(Typeface.defaultFromStyle(1));
 
         // Find the ImageView in the list_item.xml layout with the ID list_item_icon
-        ImageView imageView = (ImageView) listItemView.findViewById(R.id.image);
+        ImageView locationImageView = listItemView.findViewById(R.id.locationImage);
         // Get the image resource ID from the current Destination object and
         // set the image to iconView
         if (currentDestination.hasImage()) {
-            imageView.setImageResource(currentDestination.getImageResourceID());
+            locationImageView.setImageResource(currentDestination.getImageResourceID());
         } else {
-            imageView.setVisibility(View.GONE);
+            locationImageView.setVisibility(View.GONE);
         }
 
         // Find the ImageView in the list_item.xml layout with the ID list_item_icon
-        ImageView playIcon = (ImageView) listItemView.findViewById(R.id.playIC);
+        ImageView playIcon = listItemView.findViewById(R.id.playIC);
         // Get the image resource ID from the current Destination object and
         // set the image to iconView
         playIcon.setImageResource(R.drawable.ic_play_arrow_white_24dp);

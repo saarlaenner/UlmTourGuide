@@ -28,19 +28,19 @@ public class BarsFragment extends Fragment {
         //define the ArrayList of locations
         final ArrayList<Destination> locations = new ArrayList<Destination>();
         //add locations to the array
-        locations.add (new Destination( "Xinedome", "City", "Cocktails"));
-        locations.add (new Destination( "Wilder Mann", "Fischerviertel", "Bar"));
-        locations.add (new Destination( "Besitos", "City", "Cocktails"));
-        locations.add (new Destination( "Murphys Law", "City", "Pub"));
-        locations.add (new Destination( "Trödler Abraham", "Fischerviertel", "Cocktails"));
-        locations.add (new Destination( "Glashaus", "City", "Cafe"));
-        locations.add (new Destination( "Fräulein Lecker", "City", "Wein"));
-        locations.add (new Destination( "Beckers", "Fischerviertel", "Cocktails"));
+        locations.add (new Destination( getString(R.string.xinedome), getString(R.string.city), getString(R.string.cocktails)));
+        locations.add (new Destination( getString(R.string.wilder_mann), getString(R.string.fischerviertel), getString(R.string.bar)));
+        locations.add (new Destination( getString(R.string.besitos), getString(R.string.city), getString(R.string.cocktails)));
+        locations.add (new Destination( getString(R.string.murphys_law), getString(R.string.city), getString(R.string.pub)));
+        locations.add (new Destination( getString(R.string.troedler_abraham), getString(R.string.fischerviertel), getString(R.string.cocktails)));
+        locations.add (new Destination( getString(R.string.glashaus), getString(R.string.city), getString(R.string.cafe)));
+        locations.add (new Destination( getString(R.string.fraeulein_lecker), getString(R.string.city), getString(R.string.wein)));
+        locations.add (new Destination( getString(R.string.beckers), getString(R.string.fischerviertel), getString(R.string.cocktails)));
 
         //initialize the adapter and connect it with the listview
-        LocationsAdapter itemsAdapter = new LocationsAdapter(getActivity(), locations, R.color.category_bars);
-        ListView listView = (ListView) rootView.findViewById(R.id.list);
-        listView.setAdapter(itemsAdapter);
+        LocationsAdapter locationItemsAdapter = new LocationsAdapter(getActivity(), locations, R.color.category_bars);
+        ListView listView = rootView.findViewById(R.id.list);
+        listView.setAdapter(locationItemsAdapter);
 
         //define the OnClickListener on the listView
         listView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
@@ -52,9 +52,9 @@ public class BarsFragment extends Fragment {
                 Bundle details=new Bundle();
                 details.putInt("pos",position);
                 details.putSerializable("locations", locations);
-                Intent a = new Intent(getActivity(), BarsActivity.class);
-                a.putExtras(details);
-                startActivity(a);
+                Intent barDetailsActivity = new Intent(getActivity(), BarsActivity.class);
+                barDetailsActivity.putExtras(details);
+                startActivity(barDetailsActivity);
             }
         });
         return rootView;

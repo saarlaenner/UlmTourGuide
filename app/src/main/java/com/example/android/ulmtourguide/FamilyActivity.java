@@ -34,35 +34,35 @@ public class FamilyActivity extends AppCompatActivity {
         Destination currentDestination = Destinations.get(mDestinationID);
 
         //Set the corresponding Background color
-        LinearLayout containerLayout = (LinearLayout) findViewById(R.id.container);
+        LinearLayout containerLayout = findViewById(R.id.container);
         containerLayout.setBackgroundColor(getResources().getColor(R.color.category_family));
 
         // Find the TextView in the list_item.xml layout with the ID LocationName
-        TextView locationNameTextView = (TextView) findViewById(R.id.details_destination_name);
+        TextView locationNameTextView = findViewById(R.id.details_destination_name);
         // Get the location name from the current Destination object and
         // set this text on the LocationName TextView
-        locationNameTextView.setText((CharSequence) currentDestination.getLocationName());
+        locationNameTextView.setText(getString(R.string.name) + currentDestination.getLocationName());
 
         // Find the TextView in the list_item.xml layout with the ID LocationName
-        TextView locationDestinationTextView = (TextView) findViewById(R.id.details_destination_location);
+        TextView locationDestinationTextView = findViewById(R.id.details_destination_location);
         // Get the location name from the current Destination object and
         // set this text on the LocationName TextView
-        locationDestinationTextView.setText((CharSequence) currentDestination.getLocationDestination());
+        locationDestinationTextView.setText(getString(R.string.destination) + currentDestination.getLocationDestination());
 
         // Find the TextView in the list_item.xml layout with the ID LocationName
-        TextView locationCategoryTextView = (TextView) findViewById(R.id.details_destination_category);
+        TextView locationCategoryTextView = findViewById(R.id.details_destination_category);
         // Get the location name from the current Destination object and
         // set this text on the LocationName TextView
-        locationCategoryTextView.setText((CharSequence) currentDestination.getLocationCategory());
+        locationCategoryTextView.setText(getString(R.string.category) + currentDestination.getLocationCategory());
 
         // Find the ImageView in the list_item.xml layout with the ID list_item_icon
-        ImageView imageView = (ImageView) findViewById(R.id.details_image);
+        ImageView locationImageView = findViewById(R.id.details_image);
         // Get the image resource ID from the current Destination object and
         // set the image to iconView
         if (currentDestination.hasImage()) {
-            imageView.setImageResource(currentDestination.getImageResourceID());
+            locationImageView.setImageResource(currentDestination.getImageResourceID());
         } else {
-            imageView.setVisibility(View.GONE);
+            locationImageView.setVisibility(View.GONE);
         }
     }
 }
